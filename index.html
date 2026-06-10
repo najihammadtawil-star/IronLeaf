@@ -3802,6 +3802,336 @@
       height: 205px;
     }
   }
+
+  /* ======= HOME FULL-SCREEN SERVICE/MAP REFINEMENT ======= */
+  .services-preview {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .services-preview .section-header {
+    max-width: min(1040px, 100%);
+  }
+
+  .services-preview .section-header p {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-preview .services-grid {
+    flex: 0 0 auto;
+  }
+
+  .home-service-proof {
+    position: relative;
+    z-index: 1;
+    width: min(var(--wide-max), calc(100vw - (var(--site-gutter) * 2)));
+    margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid rgba(216,222,210,0.14);
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(216,222,210,0.08);
+    box-shadow: 0 26px 70px rgba(0,0,0,0.28);
+  }
+
+  .home-service-proof > div {
+    padding: clamp(1rem, 2vw, 1.45rem);
+    background:
+      linear-gradient(145deg, rgba(216,222,210,0.075), rgba(5,6,5,0.9)),
+      radial-gradient(circle at 16% 0%, rgba(24,200,58,0.12), transparent 36%);
+  }
+
+  .home-service-proof strong {
+    display: block;
+    color: var(--white);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .home-service-proof span {
+    display: block;
+    color: rgba(216,222,210,0.72);
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .home-area-preview {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: clamp(5rem, 7vw, 9rem);
+    padding-bottom: clamp(5rem, 7vw, 9rem);
+  }
+
+  .home-area-inner {
+    width: min(var(--wide-max), calc(100vw - (var(--site-gutter) * 2)));
+    grid-template-columns: minmax(330px, 0.46fr) minmax(640px, 1fr);
+    align-items: stretch;
+  }
+
+  .home-area-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.2rem, 2vw, 2rem);
+    border: 1px solid rgba(216,222,210,0.12);
+    border-radius: 18px;
+    background:
+      linear-gradient(160deg, rgba(216,222,210,0.07), rgba(5,6,5,0.86)),
+      radial-gradient(circle at 18% 12%, rgba(24,200,58,0.13), transparent 32%);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+  }
+
+  .home-area-copy p {
+    max-width: none;
+  }
+
+  .home-area-city-list {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0.25rem 0 1.35rem;
+  }
+
+  .home-area-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.82rem 0.95rem;
+    border: 1px solid rgba(216,222,210,0.1);
+    border-radius: 12px;
+    background: rgba(216,222,210,0.055);
+    color: rgba(244,244,239,0.86);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, color 0.22s ease;
+  }
+
+  .home-area-row::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(216,222,210,0.28);
+    box-shadow: 0 0 0 4px rgba(216,222,210,0.04);
+    transition: background 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .home-area-row:hover,
+  .home-area-row.primary {
+    transform: translateX(4px);
+    border-color: rgba(24,200,58,0.38);
+    background: rgba(24,200,58,0.12);
+    color: var(--white);
+  }
+
+  .home-area-row:hover::after,
+  .home-area-row.primary::after {
+    background: #5dff76;
+    box-shadow: 0 0 0 5px rgba(24,200,58,0.13), 0 0 18px rgba(24,200,58,0.35);
+  }
+
+  .home-area-map-card {
+    min-height: clamp(560px, 46vw, 760px);
+    cursor: grab;
+  }
+
+  .home-area-map-card:active {
+    cursor: grabbing;
+  }
+
+  .home-area-map-card::after {
+    content: "Interactive 15-mile Katy-area service map";
+  }
+
+  .home-area-map-card.interactive {
+    pointer-events: auto;
+  }
+
+  #homeServiceMapPreview .leaflet-tile-pane {
+    filter: saturate(0.82) contrast(1.08) brightness(0.82);
+  }
+
+  #homeServiceMapPreview .leaflet-control-zoom {
+    border: 1px solid rgba(216,222,210,0.16);
+    box-shadow: 0 18px 38px rgba(0,0,0,0.38);
+  }
+
+  #homeServiceMapPreview .leaflet-control-zoom a {
+    background: rgba(5,6,5,0.9);
+    color: var(--gold-lt);
+    border-bottom: 1px solid rgba(216,222,210,0.12);
+  }
+
+  #homeServiceMapPreview .leaflet-control-zoom a:hover {
+    background: rgba(24,200,58,0.16);
+    color: var(--white);
+  }
+
+  #homeServiceMapPreview .leaflet-control-attribution {
+    background: rgba(5,6,5,0.72);
+    color: rgba(216,222,210,0.6);
+    border-radius: 8px 0 0 0;
+  }
+
+  #homeServiceMapPreview .leaflet-control-attribution a {
+    color: var(--gold-lt);
+  }
+
+  #homeServiceMapPreview .leaflet-service-marker.is-active {
+    transform: scale(1.22);
+    background: #5dff76;
+    box-shadow: 0 0 0 7px rgba(24,200,58,0.18), 0 0 25px rgba(24,200,58,0.62);
+  }
+
+  @media (max-width: 1024px) {
+    .home-service-proof {
+      grid-template-columns: 1fr;
+    }
+
+    .home-area-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .home-area-map-card {
+      min-height: 520px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-preview,
+    .home-area-preview {
+      min-height: auto;
+    }
+
+    .home-area-city-list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .home-area-row {
+      padding: 0.78rem 0.82rem;
+      font-size: 0.68rem;
+    }
+
+    .home-area-map-card {
+      min-height: 430px;
+    }
+  }
+
+  /* ======= CONTENT PAGE RESET: ABOUT / CONTACT ======= */
+  #page-about .about-inner {
+    width: min(1180px, calc(100vw - (var(--site-gutter) * 2)));
+    max-width: 1180px;
+    padding: clamp(5rem, 7vw, 7.5rem) 0;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.78fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  #page-about .about-text {
+    max-width: 680px;
+  }
+
+  #page-about .about-text p {
+    font-size: 0.95rem;
+  }
+
+  #page-about .about-visual {
+    justify-self: end;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  #page-about .about-photo {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    max-height: 430px;
+  }
+
+  #page-about .about-badge {
+    bottom: -1rem;
+    left: -1rem;
+    padding: 1.1rem 1.2rem;
+    min-width: 92px;
+  }
+
+  #page-about .about-badge .badge-num {
+    font-size: 2rem;
+  }
+
+  #page-contact .page-header {
+    padding-top: clamp(7rem, 8vw, 9.5rem);
+    padding-bottom: clamp(2.5rem, 4vw, 4rem);
+  }
+
+  #page-contact .contact-wrap {
+    width: min(1180px, calc(100vw - (var(--site-gutter) * 2)));
+    max-width: 1180px;
+    padding: clamp(4rem, 6vw, 6rem) 0 clamp(5rem, 7vw, 7rem);
+    grid-template-columns: minmax(300px, 0.82fr) minmax(520px, 1.18fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  #page-contact .contact-info {
+    max-width: 430px;
+  }
+
+  #page-contact .quote-form {
+    max-width: 720px;
+    justify-self: end;
+  }
+
+  @media (max-width: 1024px) {
+    #page-about .about-inner,
+    #page-contact .contact-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    #page-about .about-text,
+    #page-contact .contact-info {
+      max-width: 720px;
+    }
+
+    #page-about .about-visual,
+    #page-contact .quote-form {
+      justify-self: start;
+      max-width: 720px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #page-about .about-inner,
+    #page-contact .contact-wrap {
+      width: calc(100vw - 2rem);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    #page-about .about-visual {
+      max-width: 100%;
+    }
+
+    #page-about .about-photo {
+      max-height: none;
+    }
+
+    #page-contact .quote-form {
+      max-width: 100%;
+    }
+  }
 </style>
 </head>
 <body>
@@ -4040,6 +4370,20 @@
     <div style="text-align:center; margin-top: 2.5rem;">
       <button class="btn-outline" onclick="showPage('services')">Explore Service Options</button>
     </div>
+    <div class="home-service-proof reveal" aria-label="IronLeaf service strengths">
+      <div>
+        <strong>Built Around the Property</strong>
+        <span>Every recommendation starts with the condition, layout, and long-term use of the yard.</span>
+      </div>
+      <div>
+        <strong>Clear Estimate Process</strong>
+        <span>Simple next steps, honest scope, and no confusion before work begins.</span>
+      </div>
+      <div>
+        <strong>Clean Finished Work</strong>
+        <span>Prepared surfaces, sharp edges, organized crews, and a property left ready to enjoy.</span>
+      </div>
+    </div>
   </section>
 
   <!-- Service Area Preview -->
@@ -4049,12 +4393,20 @@
         <div class="section-label section-link" role="button" tabindex="0" onclick="showPage('area')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPage('area'); }">Service Area</div>
         <h2 class="section-link" role="button" tabindex="0" onclick="showPage('area')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPage('area'); }">Serving Katy, TX <em>&amp; Greater Houston</em></h2>
         <p>We focus on nearby communities where we can show up prepared, communicate clearly, and deliver finished work homeowners feel good about.</p>
+        <div class="home-area-city-list" aria-label="Home service area city controls">
+          <button class="home-area-row primary" data-home-area="houston" type="button" aria-pressed="true">Houston, TX</button>
+          <button class="home-area-row" data-home-area="katy" type="button" aria-pressed="false">Katy, TX</button>
+          <button class="home-area-row" data-home-area="fulshear" type="button" aria-pressed="false">Fulshear, TX</button>
+          <button class="home-area-row" data-home-area="richmond" type="button" aria-pressed="false">Richmond, TX</button>
+          <button class="home-area-row" data-home-area="sugar-land" type="button" aria-pressed="false">Sugar Land, TX</button>
+          <button class="home-area-row" data-home-area="cypress" type="button" aria-pressed="false">Cypress, TX</button>
+        </div>
         <button class="home-area-action" type="button" onclick="showPage('area')">
           <strong>View Service Area</strong>
           <span>Check the map, radius, and address distance.</span>
         </button>
       </div>
-      <div class="home-area-map-card reveal" role="button" tabindex="0" aria-label="Open service area map" onclick="showPage('area')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPage('area'); }">
+      <div class="home-area-map-card reveal interactive" aria-label="Interactive Katy and Greater Houston service area map">
         <div id="homeServiceMapPreview"></div>
       </div>
     </div>
@@ -6002,6 +6354,7 @@
   let lastAreaMapView = null;
   let lastActiveAreaKey = 'houston';
   let homeServiceMapPreview = null;
+  const homeServiceMarkers = {};
   const serviceMarkers = {};
 
   const serviceAreas = {
@@ -6113,16 +6466,17 @@
     homeServiceMapPreview = L.map(mapEl, {
       center: [serviceCenter.lat, serviceCenter.lng],
       zoom: 9,
-      dragging: false,
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-      boxZoom: false,
-      keyboard: false,
-      zoomControl: false,
-      attributionControl: false
+      dragging: true,
+      scrollWheelZoom: true,
+      doubleClickZoom: true,
+      boxZoom: true,
+      keyboard: true,
+      zoomControl: true,
+      attributionControl: true
     });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       maxZoom: 19
     }).addTo(homeServiceMapPreview);
 
@@ -6135,33 +6489,70 @@
       fillOpacity: 0.1
     }).addTo(homeServiceMapPreview);
 
-    const previewLabelAreas = new Set(['houston', 'katy', 'fulshear', 'sugar-land']);
     Object.entries(serviceAreas).forEach(([key, area]) => {
       if (!area.lat || !area.lng) return;
-      const marker = L.circleMarker([area.lat, area.lng], {
-        radius: 5,
-        color: '#5dff76',
-        weight: 2,
-        fillColor: '#f4f4ef',
-        fillOpacity: 1
-      }).addTo(homeServiceMapPreview);
-
-      if (previewLabelAreas.has(key)) {
-        marker.bindTooltip(area.label || area.title, {
-          className: 'home-area-tooltip',
-          direction: 'top',
-          offset: [0, -7],
-          opacity: 1,
-          permanent: true
-        });
-      }
+      const icon = L.divIcon({
+        className: '',
+        html: `<div class="leaflet-service-marker" data-home-marker-area="${key}"></div>`,
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+      const marker = L.marker([area.lat, area.lng], { icon }).addTo(homeServiceMapPreview);
+      marker.bindTooltip(area.label || area.title, {
+        className: 'home-area-tooltip',
+        direction: 'top',
+        offset: [0, -10],
+        opacity: 1,
+        permanent: true
+      });
+      marker.on('click', () => setActiveHomeServiceArea(key));
+      homeServiceMarkers[key] = marker;
     });
 
     const bounds = previewRadius.getBounds();
-    bounds.extend([29.7808, -96.02]);
-    bounds.extend([29.7604, -95.5]);
-    homeServiceMapPreview.fitBounds(bounds, { padding: [18, 18], maxZoom: 10 });
+    Object.values(serviceAreas).forEach(area => {
+      if (area.lat && area.lng) bounds.extend([area.lat, area.lng]);
+    });
+    bounds.extend([29.7808, -96.06]);
+    bounds.extend([29.7604, -95.44]);
+    homeServiceMapPreview.fitBounds(bounds, { padding: [42, 42], maxZoom: 9 });
+    setActiveHomeServiceArea('houston', { skipPan: true });
+
+    document.querySelectorAll('[data-home-area]').forEach(item => {
+      item.addEventListener('click', () => setActiveHomeServiceArea(item.dataset.homeArea));
+      item.addEventListener('mouseenter', () => setActiveHomeServiceArea(item.dataset.homeArea));
+      item.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setActiveHomeServiceArea(item.dataset.homeArea);
+        }
+      });
+    });
+
     setTimeout(() => homeServiceMapPreview.invalidateSize(), 160);
+  }
+
+  function setActiveHomeServiceArea(areaKey, options = {}) {
+    const area = serviceAreas[areaKey];
+    if (!area) return;
+
+    document.querySelectorAll('[data-home-area]').forEach(item => {
+      const isActive = item.dataset.homeArea === areaKey;
+      item.classList.toggle('primary', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
+
+    Object.entries(homeServiceMarkers).forEach(([key, marker]) => {
+      const markerEl = marker.getElement()?.querySelector('.leaflet-service-marker');
+      if (markerEl) markerEl.classList.toggle('is-active', key === areaKey);
+    });
+
+    if (!options.skipPan && homeServiceMapPreview && area.lat && area.lng) {
+      homeServiceMapPreview.panTo([area.lat, area.lng], {
+        animate: true,
+        duration: 0.45
+      });
+    }
   }
 
   function initLeafletServiceMap() {
